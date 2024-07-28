@@ -3,7 +3,7 @@
     "path": "~/Library/CloudStorage/Dropbox/IITK/Teaching/MTH208/BasicRProblems/matrices.qmd",
     "project_path": "matrices.qmd",
     "type": "quarto_markdown",
-    "hash": "0",
+    "hash": "456769021",
     "contents": "",
     "dirty": false,
     "created": 1722154149453.0,
@@ -16,16 +16,16 @@
         "Source": "Source",
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
-        "rmdVisualModeLocation": "2:0",
+        "rmdVisualModeLocation": "1598:1987",
         "cursorPosition": "0,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1722168936,
+    "lastKnownWriteTime": 1722170157,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1722168936838,
+    "last_content_update": 1722170157614,
     "read_only": false,
     "read_only_alternatives": []
 }

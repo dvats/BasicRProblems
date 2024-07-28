@@ -83,9 +83,7 @@ mat[3,2]
     answer
     ```
 
-4.  
-
-5.  Write an R function that takes any n x n matrix and returns the sum of the elements in the upper triangular part of the matrix (excluding the diagonal)
+4.  Write an R function that takes any n x n matrix and returns the sum of the elements in the upper triangular part of the matrix (excluding the diagonal)
 
     ```{r}
     sum_upper_triangular <- function(mat) {
@@ -113,7 +111,7 @@ mat[3,2]
 
     \
 
-6.  Define a 6×6 matrix with each element being the product of its row and column indices. Extract the submatrix from rows 2 to 4 and columns 3 to 5, and then calculate its inverse.
+5.  Define a 6×6 matrix with each element being the product of its row and column indices. Extract the submatrix from rows 2 to 4 and columns 3 to 5, and then calculate its inverse.
 
     ```{r eval = FALSE}
     #| eval: FALSE
@@ -137,7 +135,7 @@ mat[3,2]
 
     \
 
-7.  Define a 10×10 matrix with all elements being the number 7. Then, replace the diagonal elements with the first 10 powers of 2.
+6.  Define a 10×10 matrix with all elements being the number 7. Then, replace the diagonal elements with the first 10 powers of 2.
 
     ```{r}
 
@@ -153,7 +151,7 @@ mat[3,2]
 
     \
 
-8.  Create a function in R that takes two matrices as inputs and returns their Hadamard product (element-wise product).
+7.  Create a function in R that takes two matrices as inputs and returns their Hadamard product (element-wise product).
 
     ```{r}
 
@@ -188,7 +186,7 @@ mat[3,2]
 
     \
 
-9.  Write an R function that takes inputs `n` and `ρ`. The function should return an `n x n` identity matrix with `ρ` added to all non-diagonal elements.
+8.  Write an R function that takes inputs `n` and `ρ`. The function should return an `n x n` identity matrix with `ρ` added to all non-diagonal elements.
 
     ```{r}
     add_rho_to_identity <- function(n, rho) 
