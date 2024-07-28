@@ -1,0 +1,322 @@
+# Matrices
+
+Matrices in R are described by its rows and columns. To define a matrix, we may use the `matrix` function in R.
+
+```{r}
+#| eval: TRUE
+#| code-fold: FALSE
+mat <- matrix(c(1,5,8,3,4,0), nrow = 3, ncol = 2)
+mat
+```
+
+Accessing elements of the matrix can be done using square brackets (with two index placeholders)
+
+```{r}
+#| eval: TRUE
+#| code-fold: FALSE
+mat[1,2] # first row, 2nd column
+mat[3,2]
+```
+
+## Questions
+
+1.  Write an R snippet to create a $10 \times 10$ matrix where each entry is the product of it's row and column number. i.e. $A_{i,j} = ij$.
+
+    ```{r}
+
+    M <- array(0, dim = c(10,10))
+    for (i in 1:10)
+    {
+      for(j in 1:10)
+    {
+        M[i,j] = i*j
+      }
+    }
+    # To check your solution
+    M
+    ```
+
+2.  Write an R snippet that takes in a matrix and returns a vector with all the column sums.
+
+    (Hint: The solution to this problem can be painfully trivial or needlessly complicated.)
+
+    ```{r, eval=FALSE}
+
+    # Approach - 1
+    column_Sums <- function(M)
+    {
+      dims <- dim(M)
+      cols <- dims[2]
+      sums <- numeric(cols)
+      for(i in 1:cols)
+      {
+        sums[i] = sum(M[,i])
+      }
+      return(sums)
+    }
+
+    M <- array(1:12,dim = c(4,3))
+    M # Look at M
+
+    sums <- column_Sums(M)
+    sums # Look at column sums of M
+
+    # Aliter (Lazy approach)
+    sums <- colSums(M)
+    sums 
+
+    # Remark: Try a benchmark code on both these solutions to the problem, the result may shock you!
+    ```
+
+    \
+
+3.  Define a $6 \times 6$ matrix where each entry is the sum of random roll of two fair dice.
+
+    ```{r, eval = FALSE}
+    roll_two_dice <- function()
+    {
+      sum_of_rolls <- sum(sample(1:6, 2, replace = TRUE))
+      return(sum_of_rolls)
+    }
+    values <- replicate(36, roll_two_dice())
+    answer <- matrix(values, nrow = 6)
+    answer
+    ```
+
+4.  
+
+5.  Write an R function that takes any n x n matrix and returns the sum of the elements in the upper triangular part of the matrix (excluding the diagonal)
+
+    ```{r}
+    sum_upper_triangular <- function(mat) {
+      if (!is.matrix(mat) || nrow(mat) != ncol(mat)) {
+        stop("Input must be a square matrix")
+      }
+      
+      n <- nrow(mat)
+      sum_upper <- 0
+      
+      for (i in 1:(n-1)) {
+        for (j in (i+1):n) {
+          sum_upper <- sum_upper + mat[i, j]
+        }
+      }
+      
+      return(sum_upper)
+    }
+
+    # Example usage
+    mat <- matrix(1:25, nrow = 5, ncol = 5)
+    mat
+    sum_upper_triangular(mat)
+    ```
+
+    \
+
+6.  Define a 6×6 matrix with each element being the product of its row and column indices. Extract the submatrix from rows 2 to 4 and columns 3 to 5, and then calculate its inverse.
+
+    ```{r eval = FALSE}
+    #| eval: FALSE
+
+    mat <- matrix(0, nrow = 6, ncol = 6)
+    for (i in 1:6) {
+      for (j in 1:6) {
+        mat[i, j] <- i * j
+      }
+    }
+
+    # Extract submatrix from rows 2 to 5 and columns 3 to 5
+    submat <- mat[2:4, 3:5]
+
+    # Calculate the inverse of the submatrix
+    #inverse_submat <- solve(submat)
+
+    # Display the inverse
+    #inverse_submat
+    ```
+
+    \
+
+7.  Define a 10×10 matrix with all elements being the number 7. Then, replace the diagonal elements with the first 10 powers of 2.
+
+    ```{r}
+
+    # Create a 10x10 matrix with all elements being 7
+    mat <- matrix(7, nrow = 10, ncol = 10)
+
+    # Replace diagonal elements with the first 10 powers of 2
+    diag(mat) <- 2^(0:9)
+
+    # Display the matrix
+    mat
+    ```
+
+    \
+
+8.  Create a function in R that takes two matrices as inputs and returns their Hadamard product (element-wise product).
+
+    ```{r}
+
+    hadamard_product <- function(mat1, mat2) 
+    {
+      # Check if input matrices are of the same dimensions
+      if (dim(mat1) != dim(mat2)) {
+        stop("Input matrices must have the same dimensions")
+      }
+      
+      # Get dimensions of matrices
+      m <- nrow(mat1)
+      n <- ncol(mat1)
+      
+      # Initialize result matrix
+      result <- matrix(0, nrow = m, ncol = n)
+      
+      # Compute Hadamard product element-wise
+      for (i in 1:m) 
+      {
+        for (j in 1:n) 
+        {
+          result[i, j] <- mat1[i, j] * mat2[i, j]
+        }
+      }
+      
+      return(result)
+    }
+
+    # Also mat1*mat2 works!
+    ```
+
+    \
+
+9.  Write an R function that takes inputs `n` and `ρ`. The function should return an `n x n` identity matrix with `ρ` added to all non-diagonal elements.
+
+    ```{r}
+    add_rho_to_identity <- function(n, rho) 
+    {
+      # Initialize an n x n matrix with zeros
+      mat <- matrix(0, nrow = n, ncol = n)
+      
+      # Fill the matrix to create an identity matrix with rho added to non-diagonal elements
+      for (i in 1:n) 
+      {
+        for (j in 1:n) 
+        {
+          if (i == j) 
+          {
+            mat[i, j] <- 1  # Set diagonal elements to 1
+          } else {
+            mat[i, j] <- rho  # Set non-diagonal elements to rho
+          }
+        }
+      }
+      
+      return(mat)
+    }
+    ```
+
+    \
+
+<!-- -->
+
+10. Write an R function that takes a matrix input and returns a smaller matrix with only the intersection of even rows and even columns of the original matrix.
+
+    ```{r}
+    extract_even_rows_even_cols <- function(mat) 
+    {
+      # Determine dimensions of the input matrix
+      nrow_mat <- nrow(mat)
+      ncol_mat <- ncol(mat)
+      
+      # Initialize variables to store indices of even rows and even columns
+      even_rows <- seq(2, nrow_mat, by = 2)
+      even_cols <- seq(2, ncol_mat, by = 2)
+      
+      # Extract submatrix containing only even rows and even columns
+      submat <- mat[even_rows, even_cols]
+      
+      return(submat)
+    }
+
+    #You can use for loop too
+    ```
+
+    \
+
+<!-- -->
+
+11. Define a 3-dimensional array with dimensions `5 × 5 × 5` where the entries are random normal numbers with mean 0 and standard deviation 1.
+
+    ```{r}
+    generate_random_3d_array <- function(dim1 = 5, dim2 = 5, dim3 = 5) 
+    {
+      # Generate random normal numbers
+      data <- rnorm(dim1 * dim2 * dim3, mean = 0, sd = 1)
+      
+      # Create the 3-dimensional array
+      array_3d <- array(data, dim = c(dim1, dim2, dim3))
+      
+      return(array_3d)
+    }
+    ```
+
+    \
+
+12. Create a $100\times100$ matrix `Mat1` with $ij$th entry being $i\mod j$ for $i\geq j$ else $j \mod i$. Check via code is the matrix is Symmetric?
+
+    ```{r}
+    {r}
+    # Initialize a 100x100 matrix Mat1
+    n <- 100
+    Mat1 <- matrix(0, nrow = n, ncol = n)
+
+    # Fill in Mat1 according to the specified rules
+    for (i in 1:n) 
+    {
+      for (j in 1:n) 
+      {
+        if (i >= j) 
+        {
+          Mat1[i, j] <- i %% j
+        } else {
+          Mat1[i, j] <- j %% i
+        }
+      }
+    }
+
+    # Check if Mat1 is symmetric
+    all.equal(Mat1, t(Mat1))
+    ```
+
+    \
+
+13. Create a function which given a number n returns a $n\times n$ matrix in which each $i^{th},j^{th}$ entry is sum of results on rolling a fair die $(i+j)$ times.
+
+    ```{r}
+    {r}
+    sum_of_throws <- function(k) 
+    {
+      # Simulate k throws of a fair die (each throw results in a number from 1 to 6)
+      throws <- sample(1:6, k, replace = TRUE)
+      
+      # Return the sum of these throws
+      return(sum(throws))
+    }
+
+    # Function to create an n x n matrix with each (i, j) entry as the sum of i+j dice throws
+    dice_sum_matrix <- function(n) 
+    {
+      # Initialize the n x n matrix
+      matrix_result <- matrix(0, nrow = n, ncol = n)
+      
+      # Populate the matrix
+      for (i in 1:n) 
+      {
+        for (j in 1:n) 
+        {
+          matrix_result[i, j] <- sum_of_throws(i + j)
+        }
+      }
+      
+      return(matrix_result)
+    }
+    ```

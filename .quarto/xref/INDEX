@@ -1,0 +1,26 @@
+{
+  "index.qmd": {
+    "index.html": "6b7ad3f0"
+  },
+  "intro.qmd": {
+    "intro.html": "f0af83a6"
+  },
+  "summary.qmd": {
+    "summary.html": "ba8691a6"
+  },
+  "references.qmd": {
+    "references.html": "94933e82"
+  },
+  "vec_and_mat.qmd": {
+    "vec_and_mat.html": "23e9ea31"
+  },
+  "sims.qmd": {
+    "sims.html": "17a812cf"
+  },
+  "matrices.qmd": {
+    "matrices.html": "90dde5df"
+  },
+  "functions.qmd": {
+    "functions.html": "12bf271c"
+  }
+}

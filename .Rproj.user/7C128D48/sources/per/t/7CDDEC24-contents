@@ -1,0 +1,80 @@
+---
+title: "problem"
+author: "Indraj Prajapat"
+date: "2024-05-31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.  Write a function in R to calculate the sum of the first n natural numbers. Verify your result with the formula $$
+    \frac{n(n+1)}{2}
+    $$
+
+2.  Write a function in R to calculate the arithmetic mean of a vector of numbers.
+
+3.  Write a function in R to calculate the variance of a vector of numbers. Verify with the built-in var() function.
+
+4.  Write a function in R to calculate the n-th Fibonacci number. Verify with a recursive implementation.
+
+5.  Simulate the Monty Hall problem 1000 times. In this problem, a player picks one of three doors, behind one of which is a car and behind the other two are goats. The host, who knows what's behind each door, opens one of the two remaining doors, always revealing a goat. The player then decides whether to stick with their original choice or switch to the other unopened door. Calculate the proportion of times the player wins the car if they always switch doors.
+
+6.  A gambler starts with \$50 and bets \$1 on each game. They win each game with probability 0.5 and lose with probability 0.5. Simulate 1000 games and determine the proportion of times the gambler is ruined (loses all their money) before reaching \$100.
+
+7.  The Chevalier de Méré's Paradox involves rolling a fair die four times and betting on getting at least one six. Simulate this experiment 1000 times and calculate the proportion of times at least one six is rolled.
+
+8.  Simulate the waiting time paradox by considering a bus that arrives at a bus stop every 15 minutes. Passengers arrive at the bus stop uniformly at random during this 15-minute interval. Simulate 1000 passengers and calculate the average waiting time for the bus.
+
+9.  Write an R function to calculate the mean pixel value of the red, green, and blue channels of an image.
+
+10. In a bag, there are 5 red balls, 3 green balls, and 2 blue balls. Write an R function to randomly draw a ball from the bag.
+
+11. Simulate a random walk of 1000 steps and plot the path.
+
+12. Write an R function to calculate the proportion of each color (red, green, blue) in an image.
+
+13. write a function that gives a 2D random walk and plot it .
+
+14. Write an R function coin_flip that simulates flipping a fair coin n times and returns the number of heads.
+
+15. Write an R function dice_roll that simulates rolling a six-sided die n times and returns the frequency of each face.
+
+16. Write an R function to choose a card from pack of 52 cards.
+
+17. Write an R function bus_arrivals that simulates the arrival times of n buses following a Poisson process with rate lambda.
+
+18. Create a scatter plot of mpg vs hp from the mtcars dataset.
+
+19. Create a bar plotof the count of each cyl value from the mtcars dataset.
+
+20. Create a histogram of the mpg column from the mtcars dataset.
+
+21. Create a line plot of mpg vs hp from the mtcars dataset.
+
+22. Create a scatter plot of mpg vs hp with points sized by wt from the mtcars dataset.
+
+23. Create a density plot of the mpg column with fill by cyl from the mtcars dataset.
+
+24. Create a bar plot of the mean mpg for each cyl value from the mtcars dataset.
+
+25. Create a line plot of qsec vs hp with points from the mtcars dataset.
+
+26. Create a scatter plot of hp vs mpg with different shapes for each cyl value from the mtcars dataset.
+
+27. Create a bar plot of the count of each gear value filled by cyl from the mtcars dataset.
+
+28. You have a dataset named mtcars containing information about various car models. Perform the following tasks using dplyr:
+
+    Calculate the average horsepower for each combination of cylinder count and number of gears.
+
+    Filter out the cars with an average horsepower greater than 200.
+
+    Arrange the result in descending order of average horsepower.
+
+29. You have a dataset named iris containing information about iris flowers. Perform the following tasks using dplyr: Filter out rows where Petal.Width is less than 0.2 and Sepal.Length is greater than 5.
+
+    Group the filtered data by Species.
+
+    Calculate the maximum Petal.Length for each species.

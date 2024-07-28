@@ -1,0 +1,31 @@
+{
+    "id": "00DF2E40",
+    "path": "~/Dropbox/IITK/Teaching/MTH208/QuestionsBook/intro.qmd",
+    "project_path": "intro.qmd",
+    "type": "quarto_markdown",
+    "hash": "4151161917",
+    "contents": "",
+    "dirty": false,
+    "created": 1720754774825.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "rmdVisualMode": "true",
+        "rmdVisualWrapConfigured": "true",
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "rmdVisualCollapsedChunks": "5573,6182,6652,7797,784",
+        "rmdVisualModeLocation": "974:762.7272338867188",
+        "cursorPosition": "20,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1721210671,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1721210671333,
+    "read_only": false,
+    "read_only_alternatives": []
+}

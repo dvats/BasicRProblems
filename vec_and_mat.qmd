@@ -1,0 +1,455 @@
+# Vectors
+
+R is most suitable for vector based coding. Which means that many tasks that are done element-wise in languages like C/C++ can be done elegantly in R. Below are some exercises to get you started. A new vector can be declared in many ways, below is my default
+
+```{r}
+#| eval: TRUE
+#| code-fold: FALSE
+new <- numeric(length = 5)
+new
+
+new_again <- c(1,4,6)
+```
+
+One can access elements of a vector by using square brackets:
+
+```{r}
+#| eval: TRUE
+#| code-fold: FALSE
+new_again[3]
+```
+
+Below are some practice questions on this topic.
+
+## Questions
+
+1.  Write an R code to enumerate the squares of the first 100 natural numbers.
+
+    ```{r}
+
+    nums <- 1:100
+    nums^2   # R is vectorized
+    ```
+
+    \
+
+2.  A sequence "Dancing Numbers" is defined as follows:
+
+    if $B_n$ is even: $$
+    B_{n+1} = \dfrac{B_{n}}{2}
+    $$
+
+    else\
+    $$
+    B_{n+1} = 3B_n - 1 
+    $$
+
+    Generate the first 100 dancing numbers given $B_0$ is 13.
+
+    ```{r}
+
+    b0 <- 13
+
+    B <- numeric(1e2)
+
+    for(i in 1:100){
+      # Even
+      if (b0%%2 == 0){
+        b0 <- b0/2
+        B[i] = b0
+      }
+      # Odd
+      else{
+        b0 <- 3*b0-1
+        B[i] = b0
+      }
+    }
+
+    B
+    ```
+
+    \
+
+3.  Write a function in R to calculate the sum of the first n natural numbers. Verify your result with the formula $\frac{n(n+1)}{2}$
+
+    ```{r}
+    sum_of_natural_num = function(n)
+    {
+      # use for loop to access every number and sum them one by one in a varibale 
+      sum = 0
+      for (i in 1:n)
+      {
+        sum = sum + i
+      }
+      return(sum)
+    }
+
+    ```
+
+    \
+
+4.  Write a function in R to calculate the arithmetic mean of a vector of numbers.
+
+    ```{r}
+    arithmetic_mean = function(vec)
+    {
+      sum = sum(vec)
+      Ar_mean = sum/length(vec)
+      return(Ar_mean)
+    }
+
+    # another way
+    arithmetic_mean <- function(vec) mean(vec)
+    ```
+
+    \
+
+5.  Write a function in R to calculate the variance of a vector of numbers. The (sample) variance of observations $x_1, x_2, \dots, x_n$ is
+
+    $$\text{Var}(x_1, x_2, \dots, x_n) = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2 \,,$$
+
+    where $\bar{x} = n^{-1} \sum_{i=1}^{n} x_i$. Verify with the built-in `var()` function.
+
+    ```{r}
+    calculate_variance <- function(x) 
+    {
+      n <- length(x)
+      mean_x <- mean(x)
+      var_x <- sum((x - mean_x)^2) / (n - 1)  # we can return values direct also 
+      return(var_x)
+    }
+
+    data <- c(1,5,3,8,6,8,5,4)
+    calculate_variance(data)
+    var(data)
+    ```
+
+    \
+
+6.  Create a vector of the first 500 even integers. Then, calculate the product of all elements in this vector.
+
+    ```{r}
+    # this is the vector
+    even_seq = seq(from = 2, by = 2 , length.out = 500)
+    # product of the elements
+    prod(even_seq)
+    ```
+
+    \
+
+7.  Define a vector of the first 1000 numbers in :
+
+    i.  Arithmetic progression of 7 with common difference of 13. That is, create the sequence $a_t$ such that $a_1 = 7$ and $a_{t+1} - a_{t} = 13$ for all $t \geq 1$.
+
+        ```{r}
+        a1 <- 7
+        d <- 13
+        n <- 1000
+        arithmetic_progression <- a1 + (0:(n-1)) * d
+        ```
+
+    ii. Geometric progression of 7 with common ratio of 1/13. That is, create the sequence $a_t$ such that $a_t = 7$ and $a_{t+1}/a_t = 1/13$
+
+        ```{r}
+        a1 <- 7
+        r <- 1/13
+        geometric_progression <- a1 * r^(0:(n-1))
+        ```
+
+        \
+
+8.  Write a function which generates first `n` numbers in Fibonacci sequence.
+
+    ```{r}
+    fibonacci_sequence <- function(n) 
+    {
+      if (n <= 0) {
+        return("Enter a natural number")  
+      } else if (n == 1) {
+        # The first Fibonacci number
+        return(c(0))  
+      } else if (n == 2) {
+        # The first two Fibonacci numbers
+        return(c(0, 1))  
+      }
+      
+      # Initialize a vector of length n
+      fib <- numeric(n)  
+      fib[1] <- 0  
+      fib[2] <- 1  
+      
+      # Calculate each subsequent Fibonacci number
+      for (i in 3:n) 
+      {
+        fib[i] <- fib[i-1] + fib[i-2]  
+      }
+      
+      # return the sequence
+      return(fib)
+    }
+
+    # Example usage:
+    fibonacci_sequence(10)
+    ```
+
+    \
+
+9.  Create one vector `vec1` with $1^{st}$ 8 odd numbers and `vec2` with $1^{st}$ 8 Fibonacci numbers(remember to start from zero) and then perform the following operations:
+
+    a.  element-wise multiplication
+
+    b.  element-wise addition
+
+    c.  element-wise subtractions (`vec1 - vec2`)
+
+    d.  element-wise division
+
+    e.  elements of `vec1` raised to the power of elements of `vec2`
+
+    f.  elements of `vec1` modulo elements of `vec2`
+
+    ```{r}
+    # Define vec1 with the first 8 odd numbers using a loop
+    vec1 <- numeric(8)
+    for (i in 1:8) 
+    {
+      vec1[i] <- 2 * i - 1
+    }
+
+    # Define vec2 with the first 8 Fibonacci numbers using a loop
+    vec2 <- numeric(8)
+    vec2[1] <- 0
+    vec2[2] <- 1
+    for (i in 3:8) 
+    {
+      vec2[i] <- vec2[i - 1] + vec2[i - 2]
+    }
+
+    # Print vec1 and vec2 to verify
+    vec1
+    vec2
+
+    # a. Element-wise multiplication
+    vec_mult <- vec1 * vec2
+    vec_mult
+
+    # b. Element-wise addition
+    vec_add <- vec1 + vec2
+    vec_add
+
+    # c. Element-wise subtraction
+    vec_sub <- vec1 - vec2
+    vec_sub
+
+    # d. Element-wise division
+    vec_div <- vec1 / vec2
+    vec_div
+
+    # e. Element-wise exponentiation
+    vec_exp <- vec1^vec2
+    vec_exp
+
+    # f. Element-wise modulo operation
+    vec_mod <- vec1 %% vec2
+    vec_mod
+    ```
+
+10. Do same as question 3 but now `vec2` contains only first 4 Fibonacci numbers rest everything is the same. Will it even work or throw error if works then are there any differences you observe after doing same operations?
+
+    ```{r}
+    {r}
+    # Define vec1 with the first 8 odd numbers using a loop
+    vec1 <- numeric(8)
+    for (i in 1:8) 
+    {
+      vec1[i] <- 2 * i - 1
+    }
+
+    # Define vec2 with the first 4 Fibonacci numbers using a loop
+    vec2 <- numeric(4)
+    vec2[1] <- 0
+    vec2[2] <- 1
+    for (i in 3:4) 
+    {
+      vec2[i] <- vec2[i - 1] + vec2[i - 2]
+    }
+
+
+    # NOTICE, NO ERROR!
+
+    # Print vec1 and vec2 to verify
+    vec1
+    vec2
+
+    # a. Element-wise multiplication
+    vec_mult <- vec1 * vec2
+    vec_mult
+
+    # b. Element-wise addition
+    vec_add <- vec1 + vec2
+    vec_add
+
+    # c. Element-wise subtraction
+    vec_sub <- vec1 - vec2
+    vec_sub
+
+    # d. Element-wise division
+    vec_div <- vec1 / vec2
+    vec_div
+
+    # e. Element-wise exponentiation
+    vec_exp <- vec1^vec2
+    vec_exp
+
+    # f. Element-wise modulo operation
+    vec_mod <- vec1 %% vec2
+    vec_mod
+    ```
+
+11. Each new term in the Tribonacci Sequence is generated by adding the previous three terms. By starting with $1, 1 \text{ and } 2$, and considering the terms in the sequence whose values does not exceed $5$ million, find the sum of all even valued terms.
+
+    ```{r, eval = FALSE}
+
+    t1 <- 1
+    t2 <- 1
+    t3 <- 2
+    mx <- 5000000
+    add <- 2
+    while(TRUE){
+      tn <- t1 + t2 + t3
+      if(tn > mx)
+      {
+        break
+      }
+      if(tn %% 2 == 0)
+      {
+        add <- add + tn
+      }
+      t1 <- t2
+      t2 <- t3
+      t3 <- tn
+    }
+    add
+    ```
+
+12. Write an R function that takes a numeric vector as input and returns a vector where each element is doubled if it is even, and halved if it is odd.
+
+    ```{r}
+    modify_vector1 <- function(vec) 
+    {
+      n <- length(vec)
+      out <- numeric(length = n)
+      
+      for(i in 1:n)
+      {
+        if(vec[i] %%2 == 0)
+        {
+          out[i] <- 2*vec[i]
+        } else{
+          out[i] <- vec[i]/2
+        }
+      }
+      return(out)
+    }
+
+    # another method
+    modify_vector2 <- function(vec)
+    {
+      # we can do it in one line using sapply
+      sapply(vec, function(x) if (x %% 2 == 0) x * 2 else x / 2)
+    }
+
+    # Example usage
+    vec <- c(1, 2, 3, 4, 5)
+    modify_vector1(vec)
+    modify_vector2(vec)
+    ```
+
+    \
+
+13. Write a function that takes a numeric vector as input and returns the number of elements that are greater than the mean of the vector
+
+    ```{r}
+    count_greater_than_mean <- function(vec) 
+    {
+      mean_val <- mean(vec)
+      sum(vec > mean_val)
+    }
+
+    # Example usage
+    vec <- c(1, 2, 3, 4, 5, 10, 30)
+    count_greater_than_mean(vec)
+    ```
+
+    \
+
+14. Write an R function that generates a vector of the first 100 prime numbers and then returns the vector with only the prime numbers that are also Fibonacci numbers.
+
+    ```{r}
+
+    # Function to check if prime number
+    # if it is divisible by any number other than 1 and itself
+    is_prime <- function(n)
+    {
+      if (n <= 1) 
+      {
+        return(FALSE)
+      }
+      for (i in 2:sqrt(n)) 
+      {
+        if (n %% i == 0) 
+        {
+          return(FALSE)
+        }
+      }
+      return(TRUE)
+    }
+
+    # Function to generate the first n prime numbers
+    generate_primes <- function(n)
+    {
+      primes <- numeric(n)
+      count <- 0
+      num <- 2
+      while (count < n) 
+      {
+        # check if new number is prime or not
+        if (is_prime(num)) 
+        {
+          count <- count + 1
+          primes[count] <- num
+        }
+        num <- num + 1
+      }
+      return(primes)
+    }
+
+    # Function to generate Fibonacci numbers up to a maximum value
+    generate_fibonacci <- function(max_val) 
+    {
+      fibs <- c(0, 1)
+      while (TRUE) {
+        next_fib <- tail(fibs, 2)[1] + tail(fibs, 2)[2]
+        if (next_fib > max_val) break
+        fibs <- c(fibs, next_fib)
+      }
+      return(fibs)
+    }
+
+    # Main function to get prime Fibonacci numbers
+    prime_fibonacci_numbers <- function() 
+    {
+      # Generate the first 100 prime numbers
+      primes <- generate_primes(100)
+      
+      # Generate Fibonacci numbers up to the maximum prime value
+      max_prime <- max(primes)
+      fibs <- generate_fibonacci(max_prime)
+      
+      # Get prime Fibonacci numbers
+      prime_fibs <- primes[primes %in% fibs]
+      
+      return(prime_fibs)
+    }
+
+    ```
