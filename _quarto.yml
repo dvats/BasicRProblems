@@ -9,6 +9,7 @@ book:
   author: "Dootika Vats"
   date: "7/12/2024"
   reader-mode: true
+  google-analytics: 'G-X6WVQXS70Z'
   chapters:
     - index.qmd
     - functions.qmd
