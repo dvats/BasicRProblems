@@ -1,4 +1,4 @@
-# Functions
+# Functions \label(sec:functions)
 
 Functions in R allow use a set of commands that we can keep calling repeatedly. The goal of a function is to fulfill a certain task, typically relying on inputs from a user. The rest of the problems in this short book has many functions that we ask you to write, so here, we start with some simple functions.
 
