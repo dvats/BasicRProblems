@@ -4,8 +4,6 @@ This is a book with problems that help students learn how to code in R. The prob
 
 The idea of this book comes from having seen many students struggle in introductory coding courses, particularly due to the lack of any coding experience. It is my belief that the best way to learn R, is to do. So this book contains sets of problems towards this goal.
 
-The problems (and solutions) in this book are due to the efforts of the following students:
-[Indraj Prajapat](https://github.com/Indraj573), [Rythm Kumar](https://github.com/rythmkumar), [Saee Kamat](https://github.com/saeesk), [Subham Anand](https://github.com/Gabbar888), [Yash Bihany](https://github.com/yashbihany), [Zehaan Naik](https://github.com/Zehaan22).
+The problems (and solutions) in this book are due to the efforts of the following students: [Indraj Prajapat](https://github.com/Indraj573), [Rythm Kumar](https://github.com/rythmkumar), [Saee Kamat](https://github.com/saeesk), [Subham Anand](https://github.com/Gabbar888), [Yash Bihany](https://github.com/yashbihany), [Zehaan Naik](https://github.com/Zehaan22).
 
-The sections in the book are dedicated to the kind of tasks:
-- [Functions](\ref(sec:functions))
+
